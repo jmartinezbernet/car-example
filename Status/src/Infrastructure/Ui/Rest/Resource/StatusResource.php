@@ -12,6 +12,8 @@ class StatusResource extends AbstractRestFulMiddleware
 {
     public function get(ServerRequestInterface $request): ResponseInterface
     {
+//        return new JsonResponse("Unknown error", Httpstatuscodes::HTTP_BAD_REQUEST);
+
         return (new JsonResponse('OK'))
             ->withStatus(Httpstatuscodes::HTTP_OK);
     }
