@@ -3,14 +3,16 @@
   "description": "Sample of a dockerized php application.",
   "require": {
     "php": "^7.1",
-    "carlosbuenosvinos/ddd": "^1.6",
-    "oscarotero/psr7-middlewares":"^v3.21",
-    "zendframework/zend-expressive": "^2.1.1",
-    "zendframework/zend-expressive-aurarouter": "^2.2.0",
-    "zendframework/zend-db":"^2.9.2",
-    "http-interop/http-middleware": "^0.4.1",
-    "lukasoppermann/http-status": "^2.0",
-    "zfcampus/zf-api-problem": "^1.2"
+    "carlosbuenosvinos/ddd": "1.6",
+    "oscarotero/psr7-middlewares":"3.12.x",
+    "zendframework/zend-expressive": "2.0.5",
+    "zendframework/zend-stratigility": "2.0.1",
+    "zendframework/zend-expressive-aurarouter": "2.2.0",
+    "zendframework/zend-db":"2.9.2",
+    "zendframework/zend-expressive-helpers":"4.0",
+    "http-interop/http-middleware": "0.4.1",
+    "lukasoppermann/http-status": "2.0",
+    "zfcampus/zf-api-problem": "1.2"
   },
   "autoload": {
     "psr-4": {
