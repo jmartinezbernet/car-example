@@ -1,0 +1,10 @@
+#Crete images
+
+docker build -t my_app -f docker/app/Dockerfile .
+docker build -t my_frontend_nginx -f docker/nginx/Dockerfile .
+docker build -t my_backend_nginx -f docker/backendNginx/Dockerfile .
+
+#Run containers
+docker run --name php my_app
+docker run -p 8080:80 --link="php" -v `pwd`/public:/var/www/html my_front_nginx
+docker run -p 8081:80 --link="php" -v `pwd`:/var/www/html my_backend_nginx

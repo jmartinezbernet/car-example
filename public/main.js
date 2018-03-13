@@ -15,7 +15,7 @@ function getStatus() {
             }
         }
     };
-    xmlHttp.open("GET", "http://phpDockerizedApp.localhost/status", true);
+    xmlHttp.open("GET", "http://0.0.0.0:8081/status", true);
 
     xmlHttp.send();
 }
