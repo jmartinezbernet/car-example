@@ -1,8 +1,4 @@
 <?php
-use Ddd\Domain\DomainEventPublisher;
-use Lw\Domain\Event\LoggerDomainEventSubscriber;
-use sbKainve\Domain\Event\PersistDomainEventSubscriber;
-
 chdir(dirname(__DIR__));
 
 error_reporting(E_ALL);
