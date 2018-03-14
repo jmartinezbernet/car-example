@@ -12,7 +12,8 @@
     "zendframework/zend-expressive-helpers":"4.0",
     "http-interop/http-middleware": "0.4.1",
     "lukasoppermann/http-status": "2.0",
-    "zfcampus/zf-api-problem": "1.2"
+    "zfcampus/zf-api-problem": "1.2",
+    "davedevelopment/phpmig": "1.4"
   },
   "autoload": {
     "psr-4": {
