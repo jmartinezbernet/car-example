@@ -1,5 +1,9 @@
 <?php
 
+use Status\Application\Query\FindDemoByIdQuery;
+use Status\Application\Service\GetDemoStatusService;
+use Status\Infrastructure\Di\ServiceManager\Factories\FindDemoByIdQueryFactory;
+use Status\Infrastructure\Di\ServiceManager\Factories\GetDemoStatusServiceFactory;
 use Status\Infrastructure\Di\ServiceManager\Factories\RestFulMiddlewareAbstractFactory;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\Adapter\AdapterServiceFactory;
@@ -18,12 +22,13 @@ return [
             //Transaction
 
             //Application Service
-
+            GetDemoStatusService::class => GetDemoStatusServiceFactory::class,
             //Service
 
             //Repository
 
             //Query
+            FindDemoByIdQuery::class => FIndDemoByIdQueryFactory::class,
 
             //Specification
 
