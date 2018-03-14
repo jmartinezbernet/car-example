@@ -2,9 +2,9 @@
 
 return [
     'db' => [
-        'username'       => 'demo',
+        'username'       => 'root',
         'password'       => 'demo',
-        'hostname'       => 'localhost',
+        'hostname'       => 'mysqlserver',
         'database'       => 'demo',
         'charset'        => 'UTF8',
         'driver'         => 'PDO_Mysql',
