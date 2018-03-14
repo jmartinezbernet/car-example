@@ -6,6 +6,7 @@ This demo app provides docker files to properly build images to run within docke
 
 ### Build images
 Run the following commands to build the images.
+
 **PHP**
 ```
 docker build -t php_docker -f docker/php/Dockerfile .
