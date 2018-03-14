@@ -6,6 +6,11 @@ docker build -t my_frontend_nginx -f docker/frontendNginx/Dockerfile .
 docker build -t my_backend_nginx -f docker/backendNginx/Dockerfile .
 
 #Run containers
-docker run --name php my_app
+docker run --name mysqlserver -v /var/lib/mysql -e MYSQL_DATABASE=demo -e MYSQL_ROOT_PASSWORD=demo mysql
+docker run --rm --name php --link mysqlserver:mysqlserver  -v `pwd`:/var/www/html -w /var/www/html my_app bin/phpmig migrate -b Status/src/Infrastructure/Ui/Console/PhpMig/phpmig.php
+#docker run --rm --name php my_app
+docker run --rm --name php --link mysqlserver:mysqlserver  -v `pwd`:/var/www/html my_app
+docker run --rm --link mysqlserver:myslqserver -v `pwd`:/var/www/html --name php my_app php -S 0.0.0.0:80 -t
+/var/www/html
 docker run -p 8080:80 --link="php" -v `pwd`/public:/var/www/html my_frontend_nginx
 docker run -p 8081:80 --link="php" -v `pwd`:/var/www/html my_backend_nginx
