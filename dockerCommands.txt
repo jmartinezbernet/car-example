@@ -11,3 +11,6 @@ docker run --rm --name php --link mysqlserver:mysqlserver  -v `pwd`:/var/www/htm
 docker run --rm --name php --link mysqlserver:mysqlserver  -v `pwd`:/var/www/html my_app
 docker run --rm --name client -p 8080:80 --link="php" -v `pwd`/public:/var/www/html my_frontend_nginx
 docker run --rm --name api -p 8081:80 --link="php" -v `pwd`:/var/www/html my_backend_nginx
+
+#Run docker-compose
+docker-compose up

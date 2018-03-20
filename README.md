@@ -4,6 +4,39 @@ A sample of a php dockerized application.
 ## How to run the app
 This demo app provides docker files to properly build images to run within docker containers.
 
+Also a docker-compose.yml file has been created to make easy the deployment. 
+
+Feel free to choose the deploy method you prefer.
+
+***
+
+## Deploy using docker-compose
+To deploy the app using docker-compose you just need to run this command.
+
+```
+docker-compose up -d
+```
+
+Then you can go to _http://0.0.0.0:8080/public_ to use the client app, and _http://0.0.0.0:8081/status_ to see if api
+ server is running.
+ 
+To properly test or use the application with test data you will need to make some migration in the database. Run 
+these commands to do that. (first command will prompt a shell within the container, the second one does the migration)
+
+```
+docker exec -ti phpdockerizedapp_php_1 /bin/bash
+/var/www/html/bin/phpmig migrate -b /var/www/html/Status/src/Infrastructure/Ui/Console/PhpMig/phpmig.php
+``` 
+
+To stop the containers running use this command.
+
+```
+docker-compose down -v
+```
+
+***
+
+## Deploy using Dokerfiles
 ### Build images
 Run the following commands to build the images.
 
@@ -27,6 +60,15 @@ docker build -t my_frontend_nginx -f docker/frontendNginx/Dockerfile .
 docker build -t my_backend_nginx -f docker/backendNginx/Dockerfile .
 ```
 
+Note: The Dockerfile for both Nginx is ready to use with docker-compose. You will need to open both Dockerfiles and 
+replace these lines:
+
+from 'COPY ./nginx.conf /etc/nginx/conf.d/default.conf' to 'COPY ./docker/frontendNginx/nginx.conf /etc/nginx/conf.d/default.conf'
+
+from 'COPY ./nginx.conf /etc/nginx/conf.d/default.conf' to 'COPY ./docker/backendNginx/nginx.conf /etc/nginx/conf
+.d/default.conf'
+
+
 ***
 
 ### Run containers
@@ -44,6 +86,8 @@ To open a bash terminal within this container use the following command in a new
 ```
 docker exec -ti mysqlserver /bin/bash
 ```
+
+Mysql take a time to be configured, wait a few seconds 
 
 **Initialize database tables and data**
 ```

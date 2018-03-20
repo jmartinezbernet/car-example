@@ -1,0 +1,40 @@
+version: '2'
+
+services:
+  php:
+    build: ./docker/app
+    volumes:
+      - ./:/var/www/html
+    links:
+      - mysqlserver
+
+  mysqlserver:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: demo
+      MYSQL_ROOT_PASSWORD: demo
+    volumes:
+      - /var/lib/mysql
+#      - ./Status/src/Infrastructure/Ui/Console/PhpMig:/var/www/html/PhpMig
+#      - ./bin:/var/www/html/bin
+#    entrypoint: /var/www/html/bin/phpmig migrate -b /var/www/html/PhpMig/phpmig.php
+
+  nginx_client:
+    build: ./docker/frontendNginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./public:/var/www/html
+      - ./docker/frontendNginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    links:
+     - php
+
+  nginx_api:
+    build: ./docker/backendNginx
+    ports:
+      - "8081:80"
+    volumes:
+      - ./:/var/www/html
+      - ./docker/backendNginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    links:
+     - php
