@@ -1,5 +1,5 @@
 {
-  "name": "phpDockerizedApp",
+  "name": "car-example",
   "description": "Sample of a dockerized php application.",
   "require": {
     "php": "^7.1",
