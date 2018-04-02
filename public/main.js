@@ -1,4 +1,4 @@
-function getStatus() {
+function getCars() {
     var status = document.getElementById("status");
     var error = document.getElementById("error");
 

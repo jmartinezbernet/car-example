@@ -17,6 +17,11 @@ To deploy the app using docker-compose you just need to run this command.
 docker-compose up -d
 ```
 
+Then run composer within the php app container
+```
+docker exec -ti carexample_php_1 bash -c  "cd /var/www/html; php ./composer.phar update"
+```
+
 Then you can go to _http://0.0.0.0:8080/public_ to use the client app, and _http://0.0.0.0:8081/status_ to see if api
  server is running.
  

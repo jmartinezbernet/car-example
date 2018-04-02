@@ -17,15 +17,16 @@
   },
   "autoload": {
     "psr-4": {
-      "Status\\": "Status/src/"
+      "Car\\": "Car/src/"
 
     }
   },
   "require-dev": {
+    "phpunit/phpunit":"7.0.3"
   },
   "autoload-dev": {
     "psr-4": {
-      "StatusTest\\": "Status/tests/"
+      "CarTest\\": "Car/tests/"
     }
   },
   "config": {
