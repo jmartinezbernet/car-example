@@ -1,15 +1,23 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jmartinez
- * Date: 3/04/18
- * Time: 8:32
- */
 
 namespace Car\Domain;
 
-
 class Car
 {
+    public static function create(
+        CarRepository $carRepository,
+        $brand,
+        $model
+    )
+    {
+        $id = $carRepository->nextId();
 
+        $carState = new CarState(
+            $id,
+            $brand,
+            $model
+        );
+
+        return $carState;
+    }
 }

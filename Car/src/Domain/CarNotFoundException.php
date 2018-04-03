@@ -1,15 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jmartinez
- * Date: 3/04/18
- * Time: 8:41
- */
 
 namespace Car\Domain;
 
-
-class CarNotFoundException
+class CarNotFoundException extends \DomainException
 {
-
+    public static function withId(string $id)
+    {
+        return new self("Car with id '" . $id ."' not found.");
+    }
 }
