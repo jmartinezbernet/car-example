@@ -64,4 +64,19 @@ class RegisterCarServiceTest extends TestCase
 
         $this->assertNotNull($this->carRepository->ofId($registeredCarId));
     }
+
+    /**
+     * @test
+     */
+    public function shouldFailOnInvalidArgument()
+    {
+        $request = new RegisterCarRequest(
+            '',
+            ''
+        );
+
+        $this->expectException(\InvalidArgumentException::class);
+
+        $this->registerCarService->execute($request);
+    }
 }
