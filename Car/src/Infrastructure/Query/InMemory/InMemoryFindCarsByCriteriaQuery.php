@@ -35,6 +35,7 @@ class InMemoryFindCarsByCriteriaQuery implements FindCarsByCriteriaQuery
         $resultsCount = 0;
         $results = [];
         $totalResults = 0;
+        $totalPages = 0;
         $page = $criteria->page();
         $filterList = $criteria->filter();
 
@@ -46,17 +47,17 @@ class InMemoryFindCarsByCriteriaQuery implements FindCarsByCriteriaQuery
                 }
             }
 
-            if ($found && $resultsCount <= $criteria->pageSize()) {
-                $resultsCount++;
-                array_push($results, $car);
-            }
-
             if ($found) {
                 $totalResults++;
             }
-        }
 
-        $totalPages = ceil($totalResults / $criteria->pageSize());
+            $totalPages = (int)ceil($totalResults / $criteria->pageSize());
+
+            if ($found && $resultsCount <= $criteria->pageSize() && $totalPages === $criteria->page()) {
+                $resultsCount++;
+                array_push($results, $car);
+            }
+        }
 
         return new QueryResult($resultsCount, $totalResults, $page, $totalPages, new \ArrayIterator($results));
     }
