@@ -17,7 +17,8 @@
   },
   "autoload": {
     "psr-4": {
-      "Car\\": "Car/src/"
+      "Car\\": "Car/src/",
+      "Common\\": "Common/src/"
 
     }
   },
@@ -26,7 +27,8 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "CarTest\\": "Car/tests/"
+      "CarTest\\": "Car/tests/",
+      "CommonTest\\": "Common/tests/"
     }
   },
   "config": {

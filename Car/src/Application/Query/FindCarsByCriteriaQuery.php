@@ -2,8 +2,8 @@
 
 namespace Car\Application\Query;
 
-use Common\Application\Query\QueryCriteria;
-use Common\Application\Query\QueryResult;
+use Common\Query\QueryCriteria;
+use Common\Query\QueryResult;
 
 interface FindCarsByCriteriaQuery
 {

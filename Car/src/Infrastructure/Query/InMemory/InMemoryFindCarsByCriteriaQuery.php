@@ -3,9 +3,11 @@
 namespace Car\Infrastructure\Query\InMemory;
 
 
-use Car\Application\Query\FindAllCarsQuery;
+use Car\Application\Query\FindCarsByCriteriaQuery;
+use Common\Query\QueryCriteria;
+use Common\Query\QueryResult;
 
-class InMemoryFindAllCarsQuery implements FindAllCarsQuery
+class InMemoryFindCarsByCriteriaQuery implements FindCarsByCriteriaQuery
 {
     /**
      * @var array
@@ -28,8 +30,34 @@ class InMemoryFindAllCarsQuery implements FindAllCarsQuery
         $this->carList = $carList;
     }
 
-    public function find(): ?array
+    public function find(QueryCriteria $criteria): QueryResult
     {
-        return $this->carList;
+        $resultsCount = 0;
+        $results = [];
+        $totalResults = 0;
+        $page = $criteria->page();
+        $filterList = $criteria->filter();
+
+        foreach ($this->carList as $car) {
+            $found = true;
+            while ($filter = next($filterList) && $found) {
+                if ($car[$filter['field']] !== $filter['value']) {
+                    $found = false;
+                }
+            }
+
+            if ($found && $resultsCount <= $criteria->pageSize()) {
+                $resultsCount++;
+                array_push($results, $car);
+            }
+
+            if ($found) {
+                $totalResults++;
+            }
+        }
+
+        $totalPages = ceil($totalResults / $criteria->pageSize());
+
+        return new QueryResult($resultsCount, $totalResults, $page, $totalPages, new \ArrayIterator($results));
     }
 }

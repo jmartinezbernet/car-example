@@ -1,6 +1,6 @@
 <?php
 
-namespace Common\Application\Query;
+namespace Common\Query;
 
 class QueryParser
 {
