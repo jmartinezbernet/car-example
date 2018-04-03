@@ -5,6 +5,7 @@
     "php": "^7.1",
     "carlosbuenosvinos/ddd": "1.6",
     "ramsey/uuid": "3.5",
+    "beberlei/assert": "2.6",
     "oscarotero/psr7-middlewares":"3.12.x",
     "zendframework/zend-expressive": "2.0.5",
     "zendframework/zend-stratigility": "2.0.1",
