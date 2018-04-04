@@ -2,8 +2,12 @@
 
 use Car\Application\Query\FindCarsByCriteriaQuery;
 use Car\Application\Service\GetCarsService;
+use Car\Application\Service\RegisterCarService;
+use Car\Domain\CarRepository;
+use Car\Infrastructure\Di\ServiceManager\Factories\CarRepositoryFactory;
 use Car\Infrastructure\Di\ServiceManager\Factories\FindCarsByCriteriaQueryFactory;
 use Car\Infrastructure\Di\ServiceManager\Factories\GetCarsServiceFactory;
+use Car\Infrastructure\Di\ServiceManager\Factories\RegisterCarServiceFactory;
 use Car\Infrastructure\Di\ServiceManager\Factories\RestFulMiddlewareAbstractFactory;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\Adapter\AdapterServiceFactory;
@@ -23,10 +27,12 @@ return [
 
             //Application Service
             GetCarsService::class => GetCarsServiceFactory::class,
+            RegisterCarService::class => RegisterCarServiceFactory::class,
 
             //Service
 
             //Repository
+            CarRepository::class => CarRepositoryFactory::class,
 
             //Query
             FindCarsByCriteriaQuery::class => FindCarsByCriteriaQueryFactory::class,

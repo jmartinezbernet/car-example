@@ -5,11 +5,15 @@ namespace Car\Infrastructure\Ui\Rest\Resource;
 use Car\Application\Query\FindCarsByCriteriaQuery;
 use Car\Application\Service\GetCarsRequest;
 use Car\Application\Service\GetCarsService;
+use Car\Application\Service\RegisterCarRequest;
+use Car\Application\Service\RegisterCarService;
+use Car\Domain\CarCannotBeRegisteredException;
 use Car\Infrastructure\Ui\Rest\Middleware\AbstractRestFulMiddleware;
 use Lukasoppermann\Httpstatus\Httpstatuscodes;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\Response\JsonResponse;
+use Zend\Stdlib\Parameters;
 
 class CarCollectionResource extends AbstractRestFulMiddleware
 {
@@ -75,5 +79,27 @@ class CarCollectionResource extends AbstractRestFulMiddleware
 
         return (new JsonResponse($carList->getJsonData(), Httpstatuscodes::HTTP_OK))
             ->withStatus(200, 'OK');
+    }
+
+    public function post(ServerRequestInterface $request): ResponseInterface
+    {
+        $parameters = new Parameters($request->getParsedBody());
+
+        try {
+            $id = $this->applicationService(RegisterCarService::class)->execute(
+                new RegisterCarRequest(
+                    $parameters->get('brand', null),
+                    $parameters->get('model', null)
+                )
+            );
+        } catch (CarCannotBeRegisteredException $exception) {
+            return new JsonResponse($exception->getMessage(), Httpstatuscodes::HTTP_CONFLICT);
+        } catch (\Exception $exception) {
+            return new JsonResponse($exception->getMessage(), Httpstatuscodes::HTTP_BAD_REQUEST);
+        }
+
+        return (new JsonResponse('', Httpstatuscodes::HTTP_OK))
+            ->withHeader('location', $id)
+            ->withStatus(201, 'Car created');
     }
 }
