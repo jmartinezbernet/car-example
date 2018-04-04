@@ -22,13 +22,12 @@ return [
             //Transaction
 
             //Application Service
-            GetDemoStatusService::class => GetDemoStatusServiceFactory::class,
+
             //Service
 
             //Repository
 
             //Query
-            FindDemoByIdQuery::class => FIndDemoByIdQueryFactory::class,
 
             //Specification
 
