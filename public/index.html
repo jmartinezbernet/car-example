@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Get status demo.</title>
+    <title>Cars demo.</title>
     <base href="/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,6 +22,7 @@
 
     <div class="col-6 offset-lg-3 text-center">
         <button onclick="getCars()" type="button" class="btn btn-info">Get cars</button>
+        <span style="cursor: pointer" onclick="reset()"><i class="fa fa-times" aria-hidden="true"></i> Reset</span>
     </div>
 
     <div class="col-6 offset-lg-3">
@@ -29,8 +30,17 @@
     </div>
 
     <div class="col-6 offset-lg-3">
-        <p class="font-weight-bold">Api status: <span id="status"></span></p>
-        <span style="cursor: pointer" onclick="reset()"><i class="fa fa-times" aria-hidden="true"></i> Reset</span>
+        <table class="table table-bordered" id="carTable">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Brand</th>
+                <th>Model</th>
+            </tr>
+            </thead>
+            <tbody id="carTableData">
+            </tbody>
+        </table>
     </div>
 
 </div>

@@ -15,9 +15,6 @@ services:
       MYSQL_ROOT_PASSWORD: demo
     volumes:
       - /var/lib/mysql
-#      - ./Car/src/Infrastructure/Ui/Console/PhpMig:/var/www/html/PhpMig
-#      - ./bin:/var/www/html/bin
-#    entrypoint: /var/www/html/bin/phpmig migrate -b /var/www/html/PhpMig/phpmig.php
 
   nginx_client:
     build: ./docker/frontendNginx

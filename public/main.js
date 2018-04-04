@@ -1,29 +1,49 @@
 function getCars() {
-    var status = document.getElementById("status");
+    var carTableData = document.getElementById("carTableData");
     var error = document.getElementById("error");
 
     var xmlHttp = new XMLHttpRequest();
 
     xmlHttp.onreadystatechange = function () {
-        if (xmlHttp.readyState === 4){
+        if (xmlHttp.readyState === 4) {
             if (xmlHttp.status === 200) {
-                status.innerHTML = JSON.parse(xmlHttp.responseText);
+                var carData = JSON.parse(xmlHttp.responseText).results;
+
+
+                carData.forEach(function (elem) {
+                    var tr = document.createElement('tr');
+                    var td = document.createElement('td');
+
+                    td.innerHTML = elem.id;
+                    tr.appendChild(td);
+
+                    td = document.createElement('td');
+                    td.innerHTML = elem.brand;
+                    tr.appendChild(td);
+
+                    td = document.createElement('td');
+                    td.innerHTML = elem.model;
+                    tr.appendChild(td);
+
+                    carTableData.appendChild(tr);
+                });
+
                 error.innerHTML = "";
             } else {
                 error.innerHTML = "Error: " + xmlHttp.responseText;
-                status.innerHTML = "";
             }
         }
     };
-    xmlHttp.open("GET", "http://0.0.0.0:8081/status", true);
+    xmlHttp.open("GET", "http://0.0.0.0:8081/car?page=1", true);
 
     xmlHttp.send();
 }
 
 function reset() {
-    var status = document.getElementById("status");
+    var carTableData = document.getElementById("carTableData");
+    var error = document.getElementById("error");
 
     error.innerHTML = "";
-    status.innerHTML = "";
+    carTableData.innerHTML = "";
 }
 
