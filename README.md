@@ -29,9 +29,8 @@ To properly test or use the application with test data you will need to make som
 these commands to do that. (first command will prompt a shell within the container, the second one does the migration)
 
 ```
-docker exec -ti car-example_php_1 /bin/bash
-/var/www/html/bin/phpmig migrate -b /var/www/html/Status/src/Infrastructure/Ui/Console/PhpMig/phpmig.php
-``` 
+ocker exec -ti carexample_php_1 bash -c "/var/www/html/bin/phpmig migrate -b /var/www/html/Car/src/Infrastructure/Ui/Console/PhpMig/phpmig.php"
+```
 
 To stop the containers running use this command.
 
