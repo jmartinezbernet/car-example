@@ -17,7 +17,7 @@ use Status\Application\Service\GetDemoStatusService;
 use Status\Infrastructure\Ui\Rest\Middleware\AbstractRestFulMiddleware;
 use Zend\Diactoros\Response\JsonResponse;
 
-class DemoResource extends AbstractRestFulMiddleware
+class CarCollectionResource extends AbstractRestFulMiddleware
 {
     /**
      * @param ServerRequestInterface $request
