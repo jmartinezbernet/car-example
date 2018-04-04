@@ -12,6 +12,7 @@
     "zendframework/zend-expressive-aurarouter": "2.2.0",
     "zendframework/zend-db":"2.9.2",
     "zendframework/zend-expressive-helpers":"4.0",
+    "zendframework/zend-paginator": "2.8.1",
     "http-interop/http-middleware": "0.4.1",
     "lukasoppermann/http-status": "2.0",
     "zfcampus/zf-api-problem": "1.2",
