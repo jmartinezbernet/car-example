@@ -1,5 +1,9 @@
 <?php
 
+use Car\Application\Query\FindCarsByCriteriaQuery;
+use Car\Application\Service\GetCarsService;
+use Car\Infrastructure\Di\ServiceManager\Factories\FindCarsByCriteriaQueryFactory;
+use Car\Infrastructure\Di\ServiceManager\Factories\GetCarsServiceFactory;
 use Status\Application\Query\FindDemoByIdQuery;
 use Status\Application\Service\GetDemoStatusService;
 use Status\Infrastructure\Di\ServiceManager\Factories\FindDemoByIdQueryFactory;
@@ -22,12 +26,14 @@ return [
             //Transaction
 
             //Application Service
+            GetCarsService::class => GetCarsServiceFactory::class,
 
             //Service
 
             //Repository
 
             //Query
+            FindCarsByCriteriaQuery::class => FindCarsByCriteriaQueryFactory::class,
 
             //Specification
 
