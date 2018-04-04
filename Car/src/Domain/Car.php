@@ -8,6 +8,7 @@ class Car
 {
     /**
      * @param CarRepository $carRepository
+     * @param CarNotExistsSpecification $carNotExistsSpecification
      * @param $brand
      * @param $model
      * @return CarState
@@ -15,12 +16,23 @@ class Car
      */
     public static function create(
         CarRepository $carRepository,
+        CarNotExistsSpecification $carNotExistsSpecification,
         $brand,
         $model
     )
     {
-        Assertion::notEmpty($brand, "Sorry brand can be empty.");
-        Assertion::notEmpty($model, "Sorry model can be empty.");
+        Assertion::notEmpty($brand, "Brand can be empty.");
+        Assertion::notEmpty($model, "Model can be empty.");
+
+        $specificationObject = [
+            'brand' => $brand,
+            'model' => $model
+        ];
+
+        if (!$carNotExistsSpecification->isSatisfiedBy($specificationObject)) {
+            throw CarCannotBeRegisteredException::withError("Car cannot be registered.");
+        }
+
         $id = $carRepository->nextId();
 
         $carState = new CarState(

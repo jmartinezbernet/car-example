@@ -37,11 +37,11 @@ class InMemoryFindCarsByCriteriaQuery implements FindCarsByCriteriaQuery
         $totalResults = 0;
         $totalPages = 0;
         $page = $criteria->page();
-        $filterList = $criteria->filter();
 
         foreach ($this->carList as $car) {
             $found = true;
-            while ($filter = next($filterList) && $found) {
+            $filterList = $criteria->filter();
+            while (($filter = next($filterList)) && $found) {
                 if ($car[$filter['field']] !== $filter['value']) {
                     $found = false;
                 }
@@ -49,9 +49,8 @@ class InMemoryFindCarsByCriteriaQuery implements FindCarsByCriteriaQuery
 
             if ($found) {
                 $totalResults++;
+                $totalPages = (int)ceil($totalResults / $criteria->pageSize());
             }
-
-            $totalPages = (int)ceil($totalResults / $criteria->pageSize());
 
             if ($found && $resultsCount <= $criteria->pageSize() && $totalPages === $criteria->page()) {
                 $resultsCount++;
