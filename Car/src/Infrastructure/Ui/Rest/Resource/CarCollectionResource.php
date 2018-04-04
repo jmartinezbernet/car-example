@@ -73,7 +73,7 @@ class CarCollectionResource extends AbstractRestFulMiddleware
             return new JsonResponse($exception->getMessage(), Httpstatuscodes::HTTP_BAD_REQUEST);
         }
 
-        return (new JsonResponse($carList, Httpstatuscodes::HTTP_OK))
+        return (new JsonResponse($carList->getJsonData(), Httpstatuscodes::HTTP_OK))
             ->withStatus(200, 'OK');
     }
 }
