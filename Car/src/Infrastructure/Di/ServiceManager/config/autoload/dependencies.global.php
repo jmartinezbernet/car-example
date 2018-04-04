@@ -4,11 +4,7 @@ use Car\Application\Query\FindCarsByCriteriaQuery;
 use Car\Application\Service\GetCarsService;
 use Car\Infrastructure\Di\ServiceManager\Factories\FindCarsByCriteriaQueryFactory;
 use Car\Infrastructure\Di\ServiceManager\Factories\GetCarsServiceFactory;
-use Status\Application\Query\FindDemoByIdQuery;
-use Status\Application\Service\GetDemoStatusService;
-use Status\Infrastructure\Di\ServiceManager\Factories\FindDemoByIdQueryFactory;
-use Status\Infrastructure\Di\ServiceManager\Factories\GetDemoStatusServiceFactory;
-use Status\Infrastructure\Di\ServiceManager\Factories\RestFulMiddlewareAbstractFactory;
+use Car\Infrastructure\Di\ServiceManager\Factories\RestFulMiddlewareAbstractFactory;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\Adapter\AdapterServiceFactory;
 

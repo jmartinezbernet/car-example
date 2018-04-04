@@ -1,21 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jmartinez
- * Date: 14/03/18
- * Time: 16:44
- */
 
-namespace Status\Infrastructure\Ui\Rest\Resource;
-
+namespace Car\Infrastructure\Ui\Rest\Resource;
 
 use Car\Application\Query\FindCarsByCriteriaQuery;
 use Car\Application\Service\GetCarsRequest;
 use Car\Application\Service\GetCarsService;
+use Car\Infrastructure\Ui\Rest\Middleware\AbstractRestFulMiddleware;
 use Lukasoppermann\Httpstatus\Httpstatuscodes;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use Status\Infrastructure\Ui\Rest\Middleware\AbstractRestFulMiddleware;
 use Zend\Diactoros\Response\JsonResponse;
 
 class CarCollectionResource extends AbstractRestFulMiddleware
