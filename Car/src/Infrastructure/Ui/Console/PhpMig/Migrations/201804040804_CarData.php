@@ -3,14 +3,14 @@
 use Phpmig\Migration\Migration;
 use Zend\Db\Adapter\Adapter;
 
-class DemoTable extends Migration
+class CarData extends Migration
 {
     /**
      * Do the migration.
      */
     public function up()
     {
-        $sql = file_get_contents(__DIR__ . '/../Sql/DemoTable.sql');
+        $sql = file_get_contents(__DIR__ . '/../Sql/CarData.sql');
 
         /** @var Psr\Container\ContainerInterface $container */
         $container = $this->getContainer()['container'];
