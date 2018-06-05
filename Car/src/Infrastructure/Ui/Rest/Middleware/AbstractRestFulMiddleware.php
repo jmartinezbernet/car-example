@@ -1,6 +1,6 @@
 <?php
 
-namespace Status\Infrastructure\Ui\Rest\Middleware;
+namespace Car\Infrastructure\Ui\Rest\Middleware;
 
 use Ddd\Application\Service\ApplicationService;
 use Interop\Http\ServerMiddleware\DelegateInterface;

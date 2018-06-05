@@ -1,10 +1,14 @@
 <?php
 
-use Status\Application\Query\FindDemoByIdQuery;
-use Status\Application\Service\GetDemoStatusService;
-use Status\Infrastructure\Di\ServiceManager\Factories\FindDemoByIdQueryFactory;
-use Status\Infrastructure\Di\ServiceManager\Factories\GetDemoStatusServiceFactory;
-use Status\Infrastructure\Di\ServiceManager\Factories\RestFulMiddlewareAbstractFactory;
+use Car\Application\Query\FindCarsByCriteriaQuery;
+use Car\Application\Service\GetCarsService;
+use Car\Application\Service\RegisterCarService;
+use Car\Domain\CarRepository;
+use Car\Infrastructure\Di\ServiceManager\Factories\CarRepositoryFactory;
+use Car\Infrastructure\Di\ServiceManager\Factories\FindCarsByCriteriaQueryFactory;
+use Car\Infrastructure\Di\ServiceManager\Factories\GetCarsServiceFactory;
+use Car\Infrastructure\Di\ServiceManager\Factories\RegisterCarServiceFactory;
+use Car\Infrastructure\Di\ServiceManager\Factories\RestFulMiddlewareAbstractFactory;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\Adapter\AdapterServiceFactory;
 
@@ -22,13 +26,16 @@ return [
             //Transaction
 
             //Application Service
-            GetDemoStatusService::class => GetDemoStatusServiceFactory::class,
+            GetCarsService::class => GetCarsServiceFactory::class,
+            RegisterCarService::class => RegisterCarServiceFactory::class,
+
             //Service
 
             //Repository
+            CarRepository::class => CarRepositoryFactory::class,
 
             //Query
-            FindDemoByIdQuery::class => FIndDemoByIdQueryFactory::class,
+            FindCarsByCriteriaQuery::class => FindCarsByCriteriaQueryFactory::class,
 
             //Specification
 

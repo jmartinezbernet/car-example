@@ -1,4 +1,4 @@
-CREATE TABLE `demo` (
+CREATE TABLE `car` (
   `id` VARCHAR(64) NOT NULL,
   `data` json NOT NULL,
   PRIMARY KEY (`id`)

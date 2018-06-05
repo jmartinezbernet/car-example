@@ -1,21 +1,21 @@
 <?php
 
-namespace Status\Infrastructure\Di\ServiceManager\Factories;
+namespace Car\Infrastructure\Di\ServiceManager\Factories;
 
+use Car\Application\Query\FindCarsByCriteriaQuery;
+use Car\Application\Service\GetCarsService;
 use Psr\Container\ContainerInterface;
-use Status\Infrastructure\Query\MySql\MySqlFindDemoByIdQuery;
-use Zend\Db\Adapter\Adapter;
 
-class FindDemoByIdQueryFactory
+class GetCarsServiceFactory
 {
     /**
      * @param ContainerInterface $container
-     * @return MySqlFindDemoByIdQuery
+     * @return GetCarsService
      * @throws \Psr\Container\ContainerExceptionInterface
      * @throws \Psr\Container\NotFoundExceptionInterface
      */
     public function __invoke(ContainerInterface $container)
     {
-        return new MySqlFindDemoByIdQuery($container->get(Adapter::class));
+        return new GetCarsService($container->get(FindCarsByCriteriaQuery::class));
     }
 }

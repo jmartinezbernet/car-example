@@ -1,9 +1,9 @@
 <?php
 
-namespace Status\Infrastructure\Di\ServiceManager\Factories;
+namespace Car\Infrastructure\Di\ServiceManager\Factories;
 
 use Interop\Container\ContainerInterface;
-use Status\Infrastructure\Ui\Rest\Middleware\AbstractRestFulMiddleware;
+use Car\Infrastructure\Ui\Rest\Middleware\AbstractRestFulMiddleware;
 use Zend\ServiceManager\Factory\AbstractFactoryInterface;
 
 class RestFulMiddlewareAbstractFactory implements AbstractFactoryInterface

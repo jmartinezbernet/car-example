@@ -2,25 +2,25 @@
 
 namespace Car\Application\Service;
 
-use Car\Application\Query\FindAllCarsQuery;
+use Car\Application\Query\FindCarsByCriteriaQuery;
 use Ddd\Application\Service\ApplicationService;
 
 class GetCarsService implements ApplicationService
 {
     /**
-     * @var FindAllCarsQuery
+     * @var FindCarsByCriteriaQuery
      */
-    private $findAllCarsQuery;
+    private $findCarsByCriteriaQuery;
 
     /**
      * GetCarsService constructor.
-     * @param FindAllCarsQuery $findAllCarsQuery
+     * @param FindCarsByCriteriaQuery $findCarsByCriteriaQuery
      */
     public function __construct(
-        FindAllCarsQuery $findAllCarsQuery
+        FindCarsByCriteriaQuery $findCarsByCriteriaQuery
     )
     {
-        $this->findAllCarsQuery = $findAllCarsQuery;
+        $this->findCarsByCriteriaQuery = $findCarsByCriteriaQuery;
     }
 
     /**
@@ -30,6 +30,6 @@ class GetCarsService implements ApplicationService
     public function execute($request = null)
     {
 
-        return $this->findAllCarsQuery->find();
+        return $this->findCarsByCriteriaQuery->find($request->criteria());
     }
 }
